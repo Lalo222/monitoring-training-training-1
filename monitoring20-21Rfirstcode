@@ -1,0 +1,33 @@
+# My first Ecosystem Code, Nice.
+
+#this is an array
+primates <- c(3,5,9,15,40)
+primates
+
+# New set:
+crabs <- c(100,70,30,10,5)
+crabs
+
+# frist plot in R, crabs to primates X-Y
+plot(primates, crabs)
+
+plot(primates, crabs, col="red")
+
+plot(primates, crabs, col="red", pch=19)
+plot(primates, crabs, col="red", pch=19, cex=2)
+plot(primates, crabs, col="red", pch=19, cex=6)
+plot(primates, crabs, col="red", pch=19, cex=6, main="My First Eco Graph in R")
+
+#data frames
+Ecosets <- data.frame(primates, crabs)
+Ecosets
+
+#Ecological Numbers
+#Mean
+
+(3+5+9+15+40)/5
+
+Summary of the Dataframe
+summary(Ecosets)
+
+#commit changes
