@@ -19,8 +19,8 @@ plot(primates, crabs, col="red", pch=19, cex=6)
 plot(primates, crabs, col="red", pch=19, cex=6, main="My First Eco Graph in R")
 
 #data frames
-Ecosets <- data.frame(primates, crabs)
-Ecosets
+ecoset <- data.frame(primates, crabs)
+ecoset
 
 #Ecological Numbers
 #Mean
@@ -28,6 +28,6 @@ Ecosets
 (3+5+9+15+40)/5
 
 Summary of the Dataframe
-summary(Ecosets)
+summary(ecoset)
 
 #commit changes
