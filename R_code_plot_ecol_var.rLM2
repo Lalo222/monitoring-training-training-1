@@ -1,0 +1,80 @@
+# Exercise 2 November 6th Friday 2020 
+
+# R code for plotting the relationship among ecological variables
+
+# today we use a dataset from package table. Import from R and use it!
+#R has default statistical tools, we can add code as well and build R package,cran.r-project.org rasterdiv. sp package, sp.pdf
+#Install package, we go out of R and grab package and go back into R, ("in/out")
+
+install.packages ("sp")
+library(sp)
+
+#we got this from directory data R called meuse with command data(name)
+
+#look inside set
+data(meuse)
+meuse
+
+#R is case sensitive, we need View cap letter! Gives us a table view of data
+
+View(meuse)  #For Mac, use :https://www.xquartz.org
+
+#to see first part of table, under head
+
+head(meuse)
+#we are seeing the x,y coordinate with various sets of data, cd,Pb, Zn concentrations
+#Exercise
+#mean of all of the variables - used last time - summary
+
+
+
+# (11.7+8.6+6.5)/N  takes too long
+
+#do summary function, powerful tool, medium and mean of data
+summary(meuse)
+
+#plot meuse, cad x, zinc y
+
+#       x      y cadmium copper lead zinc  elev       dist   om ffreq soil lime
+1 181072 333611    11.7     85  299 1022 7.909 0.00135803 13.6     1    1    1
+2 181025 333558     8.6     81  277 1141 6.983 0.01222430 14.0     1    1    1
+3 181165 333537     6.5     68  199  640 7.800 0.10302900 13.0     1    1    1
+4 181298 333484     2.6     81  116  257 7.655 0.19009400  8.0     1    2    0
+5 181307 333330     2.8     48  117  269 7.480 0.27709000  8.7     1    2    0
+6 181390 333260     3.0     61  137  281 
+
+# primates <- c(3,5,9,15,40)
+> primates
+[1]  3  5  9 15 40
+> crabs <- c(100,70,30,10,5)
+> crabs
+[1] 100  70  30  10   5
+> plot(primates, crabs)
+#follow the example
+
+cadmium <- c(11.7,8.6,6.5,2.6,2.8,3.0)
+zinc <- c(1022,1141,640,257,269,281)
+plot (cadmium,zinc)
+
+#or short cut as he shows, 
+plot(meuse$cadmium,meuse$zinc)
+#this gave all the data, not just ones I listed
+
+attach(meuse)
+plot (cadmium,lead)
+#doesn't work because I made the manual plot before with predetermined length values....
+#so I will use Copper,lead, that are unlabled in length
+#Scatterplot Matrices
+pairs(meuse)
+#worked but lost graphs when went small
+#pairing only the elements part of the dataset, for example make graph only with cadmium, copper, lead and zinc.
+#redo function, lost graphs
+#homework  - next time spatial R
+
+
+#or attach function
+attach(meuse)
+
+
+
+
