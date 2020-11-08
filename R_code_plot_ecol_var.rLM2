@@ -75,6 +75,11 @@ pairs(meuse)
 #or attach function
 attach(meuse)
 
+#homework  tried..to no avail....wipe your tears and try again
+
+meuse <-data.frame(cadmium,zinc)
+#nothing happened
+
 
 
 
