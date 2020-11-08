@@ -79,6 +79,32 @@ attach(meuse)
 
 meuse <-data.frame(cadmium,zinc)
 #nothing happened
+#class
+class(meuse)
+# from internet > names(meuse)
+[1] "x" "y" "cadmium" "copper" "lead" "zinc" "elev"
+[8] "dist" "om" "ffreq" "soil" "lime" "landuse" "dist.m"
+> coordinates(meuse) = ~x+y
+> class(meuse)
+
+#gstat not installed
+# library(sp)
+# data(meuse)
+# class(meuse)
+
+# names(meuse)   # coordinates(meuse) = ~x+y
+# class(meuse)
+summary(meuse)
+coordinates(meuse)[1:5,]
+# bubble(meuse, "zinc",
++ + col=c("#00ff0088", "#00ff0088"), main = "zinc concentrations (ppm)")  error 
+#will try bubble(cadmium,zinc)
+#error Error in as(obj, "SpatialPointsDataFrame") : 
+  no method or default for coercing “numeric” to “SpatialPointsDataFrame”
+  
+  #good night, try tomorrow...To dry one's eyes and laugh at a fall,
+#  And, baffled, get up and begin again,—browning
+
 
 
 
