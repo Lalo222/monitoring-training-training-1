@@ -66,7 +66,7 @@ plot (cadmium,lead)
 #so I will use Copper,lead, that are unlabled in length
 #Scatterplot Matrices
 pairs(meuse)
-#worked but lost graphs when went small
+#worked but lost graphs when went small  duhh... just in reduced box
 #pairing only the elements part of the dataset, for example make graph only with cadmium, copper, lead and zinc.
 #redo function, lost graphs
 #homework  - next time spatial R
@@ -85,14 +85,16 @@ class(meuse)
 [1] "x" "y" "cadmium" "copper" "lead" "zinc" "elev"
 [8] "dist" "om" "ffreq" "soil" "lime" "landuse" "dist.m"
 > coordinates(meuse) = ~x+y
-> class(meuse)
+> class(meuse)   from internet stop#
 
 #gstat not installed
+
 # library(sp)
 # data(meuse)
 # class(meuse)
 
-# names(meuse)   # coordinates(meuse) = ~x+y
+# names(meuse)   
+# coordinates(meuse) = ~x+y
 # class(meuse)
 summary(meuse)
 coordinates(meuse)[1:5,]
@@ -104,6 +106,71 @@ coordinates(meuse)[1:5,]
   
   #good night, try tomorrow...To dry one's eyes and laugh at a fall,
 #  And, baffled, get up and begin again,—browning
+#install.packages("sp")
+library(sp)
+
+data(meuse)
+
+head(meuse)
+
+# coordinates
+coordinates(meuse) = ~x+y      # alt+126
+
+plot(meuse)
+
+spplot(meuse, "zinc")
+
+# Exercise: plot the spatial amount of copper
+spplot(meuse, "copper", main="Copper concentration")
+
+bubble(meuse, "zinc")
+bubble(meuse, "zinc", main="Zinc concentration")
+
+# Exercise: bubble copper in red
+bubble(meuse, "copper", main="Cppoer concentration", col="red")
+
+#this gives me a red scatter type plot for copper, works
+#new class - 11/9/2020
+#recall with library(sp)
+library(sp)
+data(meuse)
+
+paris(meuse)  #puts all variables together
+
+#  x   O
+#      Y where O represents how they are related
+#dataframe, use head function simplest rdocumentation.org
+#cadmium copper lead zinc  we wanted just the soil variables
+
+#what are numbers of these variables we count from x, y, and laterally, 123456, so 3-6 for elements, python uses 0 as first
+#soil therefore have column 3 - 6  [quadratic brackets to label portion of matrix data we want]. print options 3:6 and comma represents start
+pairs(meuse[,3:6])  #for columns , for rows by default in dataframe or filter()
+
+#use names of columns      
+pairs( ~cadmium +copper+ lead+ zinc, data=meuse)    # ~ must use number pad with alt if I want to identify by name of column
+
+#let's prettify the graph...good verb
+#exercise, we can remove a column if we want, leave out the name, easy as opposed to [,3,5:6]
+#Exercise, change column color
+pairs( ~cadmium +copper+ lead+ zinc, data=meuse)
+#?bubble(meuse, "copper", main="Cppoer concentration", col="red"  nope not this
+Color in R stored in brackets
+pairs( ~cadmium +copper+ lead+ zinc, data=meuse,col="red", pch=17,cex=3)
+#use the par() function to change colors of single panels, not bubble
+#pch changes shape used in graph
+pch(, data=meuse)
+#increase size of triangle  was cex  character bigger
+cex=3
+pairs( ~cadmium +copper+ lead+ zinc, data=meuse,col="red", pch=17,cex=3)
+#called extrapolation data  #https://statis
+#multivariate analysis in R  Spatial statistics: from thesis
+
+
+
+
+ 
+
+
 
 
 
