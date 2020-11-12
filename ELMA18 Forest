@@ -4,6 +4,7 @@
 #mean(kidswalk$agewalk)  #attach(kidswalk)
 View(meuse)  # works, it is really cool
 #first convert Excel to csv file and only one allowed per sheet View is working
+#can analyze in R per sheet created from Excel
 #correct sequence to retrieve 
 # source("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-TESTA22sub.csv")
 Error in source("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-TESTA22sub.csv") : 
@@ -18,3 +19,8 @@ Error in source("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-T
 ##removing duplicates 
 
 df1<- unique(df)
+
+#data columns and rows from excel need to be noted somehow, because factors are being included in the data matrix
+#maybe use formula and get excell to do the multiplication rather than step by step
+#summary, pairs and other commands work well, but means are not true means due to excel problem
+#also how to remove duplicate values not duplicate rows and columns as there are none
