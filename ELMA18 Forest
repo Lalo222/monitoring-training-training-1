@@ -4,3 +4,17 @@
 #mean(kidswalk$agewalk)  #attach(kidswalk)
 View(meuse)  # works, it is really cool
 #first convert Excel to csv file and only one allowed per sheet View is working
+#correct sequence to retrieve 
+# source("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-TESTA22sub.csv")
+Error in source("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-TESTA22sub.csv") : 
+  C:\Users\123fatto\Desktop\R code\Convolution data mod 18-TESTA22sub.csv:1:2: unexpected input
+1: ï»
+     ^
+> SUBSET <- read.csv(file.choose("C:\\Users\\123fatto\\Desktop\\R code\\Convolution data mod 18-TESTA22sub.csv"))
+> View(SUBSET)
+#remove duplicates library(data.table)
+# df<- fread("filename.csv")
+
+##removing duplicates 
+
+df1<- unique(df)
