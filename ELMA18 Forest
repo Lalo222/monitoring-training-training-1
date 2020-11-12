@@ -2,3 +2,5 @@
 #'read.csv(file.choose())   
 #> attach(kidswalk) 
 #mean(kidswalk$agewalk)  #attach(kidswalk)
+View(meuse)  # works, it is really cool
+#first convert Excel to csv file and only one allowed per sheet View is working
