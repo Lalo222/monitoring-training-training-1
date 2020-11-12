@@ -1,0 +1,4 @@
+#kidswalk <- read.csv(file.choose())
+#'read.csv(file.choose())   
+#> attach(kidswalk) 
+#mean(kidswalk$agewalk)  #attach(kidswalk)
