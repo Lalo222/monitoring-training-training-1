@@ -22,80 +22,45 @@ spplot(meuse,"zinc",main="Concentration of zinc")
 
 #main give me the ability to title my plot, do not forget ""
 
+
+#see where zn is higher
+#and color each subset of data, each element that have values in the columns
+#we are equalizing,=, and then grouping with tilda alt 126 number pad only~
+
 #plot concentration of Cu, we ploted Zn, now Cu
 spplot(meuse,"copper",main="Concentration of copper")
 
 # Exercise, see Cu and Zn in two panels, good, we can compare data
 
-#see where zn is higher
-#and color each subset of data, each element that have values in the columns
-#we are equalizing,=, and then grouping with tilda alt 126 number pad only~
-# setting the working directory: lab
-# Windows
-# setwd("C:/lab/")
-# Mac users
-# setwd("/Users/yourname/lab/")
-# Linux users
-setwd("~/lab")
+#tried to solve  spplotplot("copper","zinc")
+#Error in spplotplot("copper", "zinc") : 
+  #could not find function "spplotplot"  because I need to define my data meuse,c(
 
-covid <- read.table("covid_agg.csv", head=T)
-head(covid)
+#ok, do thi,slmost I did not put the c!!!!  
+spplot(meuse,c("copper","zinc"))
 
-attach(covid)
-plot(country,cases)
+#now bubble function, we will make a bubble plot, not colors, we use bubbles
 
-# plot(covid$country,covid$cases)
+#we will have bubbles size based on their value size in the data, like 1400vs500, bubble size will vary...cool
+bubble(meuse,"zinc")
 
-plot(country, cases, las=0) # parallel labels
-plot(country, cases, las=1) # horizontal labels
-plot(country, cases, las=2) # perpendicular labels
-plot(country, cases, las=3) # vertical labels
+#powerful visually, the dots give me info based on their size  nice
 
-plot(country, cases, las=3, cex.axis=0.5)
-plot(country, cases, las=3, cex.axis=0.7)
+#my data has columns named incorrectly ask how to correct also can we use number of column and row rather than names
 
-# ggplot2 package
-install.packages("ggplot2")
-library(ggplot2)  # require(ggplot2)
-install.packages("ggplot2")
+#do lead too  
+bubble(meuse,"lead")
 
-# If ggplot2 cannot be found by the software: install the devtools package and then install 
-# install.packages("devtools")
-# devtools::install_github("tidyverse/ggplot2")
+#we can see visually where we have highest concentrations, such as NE, central, SW, etc.
+#change color for bubbles
+bubble(meuse,"lead",col="red")
 
-# save the .RData under the menu File
-# for Windows users: save as "yourprefferredname.RData"
+# GDAL to overlay data to see contrast and subtract values perhaps, in future we will use
+
+#New file now my location for data
+C:\Users\123fatto\Desktop\R code    
 
 
-# load the previously saved .RData
+#downloaded Covid data
 
-# setting the working directory: lab
-# Windows
-# setwd("C:/lab/")
-# Mac users
-# setwd("/Users/yourname/lab/")
-# Linux users
-setwd("~/lab")
-
-load("spatial.RData")
-
-ls()
-# covid
-
-install.packages("ggplot2")
-library(ggplot2) #require(ggplot2)
-
-data(mpg)
-head(mpg)
-# key components: data, aes, geometry
-ggplot(mpg, aes(x=displ,y=hwy)) + geom_point()
-ggplot(mpg, aes(x=displ,y=hwy)) + geom_line()
-ggplot(mpg, aes(x=displ,y=hwy)) + geom_polygon()
-
-head(covid)
-ggplot(covid, aes(x=lon, y=lat, size=cases)) + geom_point()
-
-# Mac Users: in case you receive a graphical error, assign the ggplot to an object:
-# graph1 <- ggplot(covid, aes(x=lon, y=lat, size=cases)) + geom_point() e in seguito ho 
-# and then plot by:
-# plot(graphs_1) 
+ 
