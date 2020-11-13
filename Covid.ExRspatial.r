@@ -22,6 +22,11 @@ spplot(meuse,"zinc",main="Concentration of zinc")
 
 #main give me the ability to title my plot, do not forget ""
 
+#plot concentration of Cu, we ploted Zn, now Cu
+spplot(meuse,"copper",main="Concentration of copper")
+
+# Exercise, see Cu and Zn in two panels, good, we can compare data
+
 #see where zn is higher
 #and color each subset of data, each element that have values in the columns
 #we are equalizing,=, and then grouping with tilda alt 126 number pad only~
