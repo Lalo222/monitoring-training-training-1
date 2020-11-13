@@ -1,7 +1,30 @@
-# instructions from DR DR
+# R spacial view of points - instructions from DR DR
 #download covid_agg.csv from our teaching site and build a folder called lab into C: 
 # put the covid_agg.csv file into the folder lab
 
+#first we practice again for sp and meuse
+
+library(sp)    #quotes"sp" only to go out of R e grab e take back to our cave
+data(meuse)
+
+head(meuse)    #shows us first 6 lines of data
+
+coordinates(meuse)= ~x+y #only to sp   it gave all data, not just from head function
+#we see how scattered in space, 
+
+#now we can see one of the elements in space, by 
+#using spplot()  directly into sp package, rastor file, an image! a map with pixels(smallest unit)
+
+# spplot(meuse,"colomn"), lets color of data points of elements
+spplot(meuse,"zinc")
+#title, main=Concentration of Zinc)
+spplot(meuse,"zinc",main="Concentration of zinc") 
+
+#main give me the ability to title my plot, do not forget ""
+
+#see where zn is higher
+#and color each subset of data, each element that have values in the columns
+#we are equalizing,=, and then grouping with tilda alt 126 number pad only~
 # setting the working directory: lab
 # Windows
 # setwd("C:/lab/")
