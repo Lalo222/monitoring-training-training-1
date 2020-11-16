@@ -123,7 +123,10 @@ ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col="red")
 #setwd, for importing and exporting data so build new directory called lab
 
 #set for windows, setwd("")
-setwd("C:/
+setwd(("C:\\Users\\123fatto\\Desktop\\R code\lab\))
+#setwd("C:/lab/")
+gives a +
+read command 
 
 
 
