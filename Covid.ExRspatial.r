@@ -126,7 +126,18 @@ ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col="red")
 setwd(("C:\\Users\\123fatto\\Desktop\\R code\lab\))
 #setwd("C:/lab/")
 gives a +
-read command 
+#read command 
+ setwd("C:\\Users\\123fatto\\Desktop\\R code\lab\)
+#Error: '\l' is an unrecognized escape in character string starting ""C:\\Users\\123fatto\\Desktop\\R code\l"
+> setwd("C:/lab/"
++ ("C:\\Users\\123fatto\\Desktop\\R code\)
+Error: '\)' is an unrecognized escape in character string starting ""C:\\Users\\123fatto\\Desktop\\R code\)"
+> source("C:\\Users\\123fatto\\Desktop\\R code\\covid_agg (1).csv")
+Error in source("C:\\Users\\123fatto\\Desktop\\R code\\covid_agg (1).csv") : 
+  C:\Users\123fatto\Desktop\R code\covid_agg (1).csv:1:5: unexpected symbol
+1: cat country
+        ^
+> 
 
 
 
