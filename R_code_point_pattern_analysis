@@ -1,0 +1,33 @@
+#Point Pattern analysis
+
+#Install spatstat, did it, something went well
+
+#Populations spread, clumped etc. remember discussion on population
+#copy in GIT up
+#Now let's see the density of covid on planet
+
+#let's make a planar point  pattern in spatstat
+attach(covid)
+#ppp(() so we need lon x coor, y is lat, to call in , here we are making parameters and use c to make array
+names(covid)  # x,y, ranges
+covid_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+#Now we have longi, lat and ranges and how to know ranges
+
+#density()
+density_map <- density(covid_planar)
+plot(density_map)
+
+#now use points with planar to see the points on map
+density_map <-density(covid_planar)
+#color, we can change 
+cl <- colorRampPalette(c('yellow','orange','red'))(100) #then replot
+plot(density_map, col=cl)
+#points in plt again, always redo
+points(covid_planar)  #can see these in R info to get all colors
+
+#Putting the countries ontop of map
+install.packages("rgdal")
+
+#so this red plus means I did not finish the function and need to close it!
+
+#his code tomorrow
