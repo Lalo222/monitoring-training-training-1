@@ -137,7 +137,32 @@ Error in source("C:\\Users\\123fatto\\Desktop\\R code\\covid_agg (1).csv") :
   C:\Users\123fatto\Desktop\R code\covid_agg (1).csv:1:5: unexpected symbol
 1: cat country
         ^
-> 
+> #still having problems with directory - name the data.frame also
+   
+   #source("C:\\lab\\covid_agg (1).csv")
+   # cannot open file 'C:\lab\covid_agg (1).csv, header=TRUE': No such file or directory
+> setwd("C:\\lab\\")
+> covid <- read.table("C:\\lab\\covid_agg (1).csv, header=TRUE")
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'C:\lab\covid_agg (1).csv, header=TRUE': No such file or directory
+> covid <- read.table("C:\\lab\\covid_agg (1).csv, header=TRUE")
+#so I need to go back and fix the working directory
+   #GGPlot to library
+   #will use meuse for now I think, can't load COVID data
+   
+   #got spatstat, so that's good, now we see x and y in the table, e to w is longiture, n/s latitude
+   #names(covid)
+   #ggplot2
+   library(ggplot2)
+   ggplot(covid, aes(x=lon, y=lat)) + geom_point()
+   ggplot(covid,aes(x=lon,y=lat, size=jcases)) + geom_point()
+   
+   #makes scatter plot and concentration of cases, will use R for point patter analysis
+   
+   
+   
 
 
 
