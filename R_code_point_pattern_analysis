@@ -28,15 +28,21 @@ head(covid)
 summary(covid)
 
 #let's make a planar point  pattern in spatstat
-attach(covid)
+
 #ppp(() so we need lon x coor, y is lat, to call in , here we are making parameters and use c to make array in front of c(-180,180,-90,90)
 
-names(covid)  # x,y, ranges    important remember this
+
 
 covid_planar <- ppp(lon, lat,c(-180, 180), -90,90))
 
 #Now we have longi, lat and ranges and how to know ranges
-> attach(covid)
+> # =attach(covid)  - must attach first
+attach(covid)
+
+# x,y, ranges    important remember this
+names(covid)  
+#yields  [1] "cat"     "country" "cases"   "lat"     "lon" 
+
 The following objects are masked from covid (pos = 3):
 
     cases, cat, country, lat, lon
@@ -50,15 +56,19 @@ The following objects are masked from covid (pos = 3):
 + )    # here see that I did not close the command with the ), just type it and it finishes and gives back the <#
 > points(covid_planar)  #put dots in the colors
 
-#density()  
+#density_map()  we are naming our map density_map with also the covid_planar we named with  attributes covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
 density_map <- density(covid_planar)
 plot(density_map)        # I end here from Friday's lesson, made plot well, all good.  
 
 #now use points with planar to see the points on map
 density_map <-density(covid_planar)
+
 #color, we can change 
-cl <- colorRampPalette(c('yellow','orange','red'))(100) #then replot
+cl <- colorRampPalette(c('yellow','orange','red'))(100) 
+
+#then replot
 plot(density_map, col=cl)
+
 #points in plt again, always redo
 points(covid_planar)  #can see these in R info to get all colors
 
