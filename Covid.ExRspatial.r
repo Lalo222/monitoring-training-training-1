@@ -119,6 +119,8 @@ ggplot(d, aes(x=biofuels, y=oxidative)) + geom_line(size=5, col="red")
 ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col="red")
 
 #geom_polygon if we want
+ggplot(d, aes(x = biofuels, y = oxydative)) + geom_polygon()
+
 
 #setwd, for importing and exporting data so build new directory called lab
 
