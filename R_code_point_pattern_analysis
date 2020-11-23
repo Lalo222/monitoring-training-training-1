@@ -212,6 +212,6 @@ null device
 png("figure1.png")
 pdf("figure1.pdf")
 
-pdf("figure1.pdf")
+pdf("figure1.pdf")   #note pdf e png are 0KB nothing created into lab, name yes, file stored 0KB
 
 #we are at number 3 in lab plan and do 4,5 Friday
