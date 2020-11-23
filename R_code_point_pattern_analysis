@@ -87,3 +87,131 @@ summary(covid)
 
 #Install rgdal for next time  - worked! good night.
 
+#crashed and lost notes.....Lenovo!!!
+
+#setwd
+setwd("C:/lab/")
+> covid <- read.table("covid_agg.csv", header=T)
+> attach(covid)
+> library(spatstat)
+Loading required package: spatstat.data
+Loading required package: nlme
+Loading required package: rpart
+
+spatstat 1.64-1       (nickname: ‘Help you I can, yes!’) 
+For an introduction to spatstat, type ‘beginner’ 
+
+
+Note: spatstat version 1.64-1 is out of date by more than 6 months; we recommend upgrading to the latest version.
+> covid <- read.table("covid_agg.csv", header=T)
+> attach(covid)
+The following objects are masked from covid (pos = 7):
+
+    cases, cat, country, lat, lon
+
+> covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> density_map <- density(covid_planar)
+> plot(density_map)
+> points(covid_planar)
+
+#rgdal
+#try to download new filesss, copy into lab folder from downloads
+library(spatstat)
+library(rgdal)
+plot(density_map, col=cl)
+#download new files,  it worked this time
+coastlines <- readOGR("ne_10m_coastline.shp")
+#these are shape files, points stored as shp, shape file, all pts have a value in table
+# also an shx which links each point to correct row in table, vector files
+#vector set of coordinates here, so in vector file type we have points, and we connect and close we have
+#geometric possibilties
+#raster and vector type
+#density map an image of pixels, rastor, pixel smallest unit in picture
+
+#again from top
+
+covid <- read.table("covid_agg.csv",head=T)
+
+attach(covid)
+
+covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+
+> density_map <- density(covid_planar)
+> plot(density_map)
+> points(covid_planar)
+> library(rgdal)
+
+cl <- colorRampPalette(c("yellow","orange","red")) (100)
+
+plot(density_map, col=cl)
+#download new files,  it worked this time
+#so we will read OGR, the coastline, build by readOGR("import", insert file name)and define name with <- we name it coastlines
+#1   coastlines <- readOGR("ne_10m_coastline.shp")
+#name       define  command ("file")
+
+#now we replot with coastlines after redoing the density map above with plot(density_map, col=cl)
+#so we plot coastlines, add lines on top of the density map
+#his
+plot(density_map, col=cl)
+plot(coastlines, add=T)
+points(covid_planar)
+#mine
+#coastlines <- readOGR("ne_10m_coastline.shp")
+#OGR data source with driver: ESRI Shapefile 
+#Source: "C:\lab\ne_10m_coastline.shp", layer: "ne_10m_coastline"
+#with 4133 features
+#It has 3 fields
+#Integer64 fields read as strings:  scalerank 
+#> plot(density_map, col=cl)
+#Error in plot.im(density_map, col = cl) : object 'cl' not found
+#> plot(coastlines, add=T)
+#> points(covid_planar)
+
+#all good worked well
+#changed colors  
+cl <- colorRampPalette(c('blue','yellow','orange','red','magenta'))(100) #
+plot(density_map, col = cl)
+#also we can change the shape of our dots, with pch=  #  points(covid_planar, pch = 19) and cex to change the size cex=0.5
+plot(coastlines, add = TRUE)
+# change this, yellow is bothersome here for me cl <- colorRampPalette(c('blue','yellow','orange','red','magenta'))(100)
+#now how to export our map to be used in thesis etc. !!!!
+#make a png folder png("figure1.png")  and dev.off()
+
+#now we will interpolate the data, we will check number of cases for disease in each country
+#head(covid)  no problem, so we will see mean value between two points,each time, like 10+20/2=15, 
+#go to temp file in lab
+#Interpolate  use marks- use the less than on the end to reflect back to waht we are marking
+marks(covid_planar) <- cases  #now we use smooth which smoothes the data, 
+cases_map <- Smooth(covid_planar)  #apply smooth to planar point and name it with arrow, cases_map
+#all get area for the least squares, so don't worry, now we need to plot
+#plot(coastlines, add=T)
+
+marks(covid_planar) <- cases
+cases_map <- Smooth(covid_planar)
+
+plot(cases_map)
+plot(cases_map, col=cl)
+plot(coastlines, add=T)
+points(covid_planar)
+#problem, Duccio solved,called, had open a graphics interfact somewhere below from 197-209 solved issue, redid dev.off()
+Error in dev.(on) : could not find function "dev."
+> plot(cases_map, col = cl)
+> points(covid_planar)
+> plot(coastlines, add = T)
+> plot(cases_map, col = cl)
+> points(covid_planar)
+> plot(coastlines, add = T)
+> dev.off()
+null device 
+          1 
+> plot(cases_map, col = cl)
+> plot(coastlines, add = T)
+> points(covid_planar)
+
+#to save map  
+png("figure1.png")
+pdf("figure1.pdf")
+
+pdf("figure1.pdf")
+
+#we are at number 3 in lab plan and do 4,5 Friday
