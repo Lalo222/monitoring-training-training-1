@@ -215,3 +215,109 @@ pdf("figure1.pdf")
 pdf("figure1.pdf")   #note pdf e png are 0KB nothing created into lab, name yes, file stored 0KB
 
 #we are at number 3 in lab plan and do 4,5 Friday
+
+#November 27th, Friday
+
+#From Virtuale
+#leo <- read.table("dati_zabotti.csv", head=T, sep=",")
+
+attach(leo)
+
+leo_ppp <- ppp(x, y, c(2300000,2325000), c(5005000,5045000))
+
+marks(leo_ppp) <- chlh
+chlh_map <- Smooth(leo_ppp)
+plot(chlh_map)
+
+marks(leo_ppp) <- t
+t_map <- Smooth(leo_ppp)
+plot(t_map)
+points(leo_ppp)
+
+par(mfrow=c(1,2))
+plot(chlh_map)
+points(leo_ppp)
+
+plot(t_map)
+points(leo_ppp)  #End of code from Virtuale
+#With Norma we are going to try to see two aspects with our data, interpolated and original
+#Spoints <- st_as_sf(covid, coords = c("lon", "lat"))
+marks(covid_planar) <- cases # interpolation
+cases_map <- Smooth(covid_planar) # interpolation
+cl <- colorRampPalette(c('lightpink2','lightsalmon','tomato1','red3','maroon'))(100)
+density_map <- density(covid_planar)
+plot(density_map)
+plot(cases_map, col = cl)
+plot(coastlines, add = T)
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+#Today open R and replot and try Norma code
+
+#He puts a new paper, nice, "Anticipating.." nice color scale to show population and cell distortsion for error, larger cell more error
+#will try to save map, very pretty, but problems
+#to save map  
+png("figure1.png")
+pdf("figure1.pdf")
+
+#today we plot cases
+#Git up step by step
+#1- point pattern file continue here point pattern analysis
+
+#so many nodes and can save time by taking only certain nodes
+### Plotting points with different size related to covid data together with the interpolation of where not measured data(average between 2 known values e continue
+# cl <- colorRampPalette(c('lightpink2','lightsalmon','tomato1','red3','maroon'))(100)
+> plot(cases_map, col = cl)
+> plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+#got his map with a variety of circles and pink shades 
+#remember to plot the map first also follow the line instructions for the R, it can not skip commands and refer back to old ones
+
+#ok so now he uses rgdal, library(rgdal)
+coastlines <- readOGR("ne_
+#put a smooter to the coastlines by resampling and check the fraction what you divide by, 10000 etc.
+#down from there, in and in and in with averages to smaller and smaller areas within our true sampled data area.
+#(bld map of density,shaded areas)
+
+#Remember "this let's us exit R and grab files"
+#setwd("~/lab")   #and recall libraries needed
+library(spatstat)
+library(rgdal)
+#Now read table to start interpolation
+covid <- read.table("covid_agg.csv", header=T)
+head(covid)
+attach(covid) #we must attach or we will need to restate everytime variables
+covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+marks(covid_planar)<-cases
+cases_map<-Smooth(covid_planar)
+Smooth(covid_planar)
+
+#now we change color map as we like, Rpackage color names
+#now we need to build point planar pattern
+covid_planar <-ppp(lon, lat, c(-180,180) c(-90,90)
+#this worked.  must have all dev.off() over and over until null
+cl <- colorRampPalette(c('lightpink2','lightsalmon','tomato1','red3','maroon'))(100)
+> plot(cases_map, col = cl)
+> covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> density_map <- density(covid_planar)
+> plot(density_map)
+> plot(cases_map, col = cl)
+# all good
+#now install packages (sf)
+Spoints <- st_as_sf(covid, coords = c("lon","lat"))
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+#discussion of the fraction for division
+# cl <- colorRampPalette(c('lightpink2','lightsalmon','tomato1','red3','maroon'))(100)
+plot(cases_map, col = cl)
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+######Warning message:
+####In plot.sf(Spoints, cex = Spoints$cases/10000, col = "purple3",  :
+ ### ignoring all but the first attribute
+coastlines <- readOGR("ne_10m_coastline.shp")
+plot(coastlines, add=T)
+
+#have the map, very nice! fancy and posh
+
+#try to save map, foresee problems
+png("cases_map.png")
+pdf("cases_map.pdf")
+
+#will ask why I have 0kB in map in lab folder for map
+####Weekend  class over today
