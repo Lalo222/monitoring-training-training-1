@@ -321,3 +321,35 @@ pdf("cases_map.pdf")
 
 #will ask why I have 0kB in map in lab folder for map
 ####Weekend  class over today
+####attach leo and open data
+leo <- read.table("dati_zabotti.csv", header=T, sep=",")
+head(leo)
+library(spatstat)
+
+#build the density map and the interpolation map, first the ppp, explain points to R
+#so we start with the ppp, so attach data set 
+attach(leo)
+
+#how to build the ppp, the max and min x,y, so by summary we 
+#so summary gives us the min and max of each variable table, x and y now we have the range
+
+# we will extend these values a little
+
+leo_ppp <- ppp(x, y, c(2300000,2325000), c(5005000,5045000))
+plot(leo_ppp)
+plot(density_map)
+points(leo_ppp)
+
+#map changes because the name needs to be unique and it went back to the original code, maybe open a new R working page each time
+
+#save work space
+
+#no single reference system and how samples can be more or less dense depending on habit, shallow water, etc.
+#try to model my data with x,y, mabye the all set is the y and have x match y to get date, where x=y, here also x and y are just coordinates, 
+not functions....
+save.image("C:\\lab\\pointanalysis")
+
+#redo with a new R window
+##save.image("C:\\lab\\pointanalysis")  
+
+
