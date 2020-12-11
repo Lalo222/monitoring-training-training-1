@@ -350,6 +350,26 @@ not functions....
 save.image("C:\\lab\\pointanalysis")
 
 #redo with a new R window
-##save.image("C:\\lab\\pointanalysis")  
+##save.image("C:\\lab\\pointanalysis") 
+
+December 11, 2020, Friday
+
+#How to reload data saved   load("C:\\lab\\point_pattern_analysis.RData")
+#Multivariate analysis, theory community is sets of individuals with 2 different species, and their interaction and living together
+
+#So we collect data with xy axis of map and see 3 plots, sample species in each plot, 
+#For me define an area for my partitioning, like Butterflys, for Francesco Guccinini, parnasius guccinni
+#See notes on discussion, no code today  except #load("biomes_multivar.RData")and library(vegan)
+
+# so for my data I can treat as biomes maybe, 6 Biomes (Congruence classes) with populations of various subsets, 3 species each or 4 and 
+#do the multivariate analysis, or even just Non-primes and subs, or Prime sets as empty set, outside the parameters of Principle components,
+#as Prin.Comp defined as large distribution of non-primes in one Superset Biome vs. another.  Is it random?  not really...from within the modulus.
+
+
+
+
+
+
+
 
 
