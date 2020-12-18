@@ -1,0 +1,52 @@
+#New File December 18th, 2020 Friday
+#Use Vegan, recall with library(vegan), downloaded already biome multi variate data
+#Always start with setting Directory!! and also I think to close dev.off so no problems later, 
+#Remember I always have to copy my file into lab folder, went fine last week
+#Also see Leo,like ls() file with Cl in sed and in aq to understand the rows and columns, if needed
+
+#Also to access file just load(),quotes xche out of R, in my lab file.
+setwd("C:/lab/")
+library(vegan)
+Loading required package: permute
+Loading required package: lattice
+This is vegan 2.5-6
+load("biomes_multivar.RData")
+
+#list my files available, nice command
+ls()
+#to see ny numbers, like this function head, shows my data, good!Matrices
+
+head(biomes)
+
+#Now we will use a new command, decorana, remember multivariate shows us relationship in space, do these live near eachother,together, love to live 2gether.
+#Now we must remember to use arrows to name, refer back to what we are "multivariating"
+
+multivar <- decorana(biomes)
+multivar               #because then we must apply the function to the named data above with decorana
+
+plot(multivar)         #Here we plot and see nice graph in all four quadrants of the graph
+
+#We can show biomes as types, like conifer, tundra etc. so we make an ellipse, I think he said, to connect plots as we can
+#Remember we are using vegan and find commands in its directory of R online
+
+head(biomes_types)
+attach(biomes_types)
+ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull", lwd=3)  #We can show biomes as types, like conifer, tundra etc. so we make an ellipse
+
+#What is ehull, lwd=3
+
+#Now we can ordispider and now type of biome into color, label true, to show type of biome, here we can see how big the tropical forest is big and the 
+#consequence of killing it, never good to kill things and we should know that, without proof and reasoning
+
+#Now we save data for our projects, interesting tools, and able to visualize the sets better and compare sizes and relationships, interpolation with statistics
+#ellipses were made by connecting the points on our map, can see in time what happens when we remove parts of pops in communities and biomes
+
+#Next time remote sensing, Monday, final lecture before Christmas
+
+#Remote sensing important, areas in real time, nice, try to use it!!!! 
+#Copernicus data, use my data of Number generation and "Populations"
+#6 lectures on Remote Sensing, my pdf are not saving, they are so nice though...
+ 
+
+
+
