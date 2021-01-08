@@ -1,3 +1,4 @@
+#Friday Jan. 8th 2021!  Remote Sensing R
 #we installed library(raster) so recall
 library(raster)
 library(RStoolbox)
@@ -63,9 +64,9 @@ plot(p224r63_2011$B4_sre, col=clnir)
 plot(p224r63_2011$B4_sre, col=clnir)
 #band 4, the color scheme is called RGB used by computers to show colors and depending on how much red, etc. now lets combine this image of layers and put
 #corresponding component  in RGB space we put blue band 1, band 2 green etc.
-#plot RGB(), we take multilayer and use RGR scheme and we will stretch, define the bands and colors and stretch, stretch"Lin"
+#plot RGB(), we take multilayer and use RGR scheme and we will stretch, define the bands and colors and stretch, stretch"Lin" #here we combine layers
 dev.off()
-plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")  #Layers together, 3 at most for RGB
 #but we cut this area and try to see a region that we can't with our eye, so we can use 3 bands to see image better, 3 bands, 3 components, only RGB space
 #so we use B1, b2, b3 for now let's shift, by one towards b4 nir, but get rid of one, we need to shift and not use 1
 dev.off() so we eliminated blue, 1 in shift, and now we see all vegetatino in red, we can see the areas where no Vegetation, important to know the landscape we see!
@@ -81,6 +82,12 @@ plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
 #Natural colors, false colors, how they differ, seems need to protect the data uplink and downlink from hacking or misleading, which leads to mistakes
 #best is a camera, if not possible then data from satelites and secure the heck out of it, in and out
 #try to save image again even though Windows doesn't want to... 
+#try like in interpolation class  png("figure1.png")
+#pdf("figure1.pdf")
 
+#Just in case file empty in lab, I tried copy metafile by right click on image and open in word, gave me a beautiful image of my image....:) ok bitfile is the 
+#same but no scale included because no longer a scale on the final image once combined layers, the separate layers listed scale
+
+#lunch late breakfast time, 
 
 
