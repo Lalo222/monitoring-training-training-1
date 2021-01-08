@@ -48,6 +48,11 @@ ordiellipse(multivar, type, col=c("black","red","green","blue"), kind = "ehull",
 #6 lectures on Remote Sensing, my pdf are not saving, they are so nice though...
 
 #Happy New Year 2021!
+
+#Notes on Remote Sensing, wavelength and numbers respresent colors, 
+#Index formula to undertand differences in what we are seeing
+#we can see the row and area on map in code, Rastor is made of pixels, RStool box for remote sensing
+
  
 
 
