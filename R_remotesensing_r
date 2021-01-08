@@ -1,0 +1,86 @@
+#we installed library(raster) so recall
+library(raster)
+library(RStoolbox)
+#set working directory  (setwd("C:/lab/")
+
+#cool same pixels but layered in different reflectance colors, same area with colored layers...
+
+#now we need function brick to upload rastor satellite data, before read was sufficient now no
+
+#grab outside R with "" 
+#had error xche was not unzipped, I copied zipped file into lab folder and then extracted (extract here) into the folder and went well
+
+#My page from R  16-19
+#library(raster)
+Loading required package: sp
+> library(RStoolbox)
+> setwd("C:/lab/")
+> library(raster)
+> p224r63_2011 <- brick("p224r63_2011_masked.grd")
+####Error in file(x, "rb") : cannot open the connection  see line 11 for fix
+> p224r63_2011 <- brick("p224r63_2011_masked.grd")
+#now a plain line, no error messages :) 
+
+#to plot this file rastor data, remember to close command   
+#plot(p224r63_2011
+#+ )   here I missed the closed ) command to close 
+
+plot(p224r63_2011
+
+#worked and good, see nice plots
+#  p224r63_2011  command to see the details,  teh B1, etc. are the colors, number of pixels and dimensions etc.
+class      : RasterBrick 
+dimensions : 1499, 2967, 4447533, 7  (nrow, ncol, ncell, nlayers)   #here we see size of data, huge, 4447533
+resolution : 30, 30  (x, y)
+extent     : 579765, 668775, -522705, -477735  (xmin, xmax, ymin, ymax)            # meters from the equator and central maridian, this is my space area
+crs        : +proj=utm +zone=22 +datum=WGS84 +units=m +no_defs                    #zone 22, Italy zone 32
+source     : C:/lab/p224r63_2011_masked.grd 
+names      :       B1_sre,       B2_sre,       B3_sre,       B4_sre,       B5_sre,        B6_bt,       B7_sre 
+min values : 0.000000e+00, 0.000000e+00, 0.000000e+00, 1.196277e-02, 4.116526e-03, 2.951000e+02, 0.000000e+00 
+max values :    0.1249041,    0.2563655,    0.2591587,    0.5592193,    0.4894984,  305.2000000,    0.3692634 
+
+#now we plot, same function again, but we have 4 mill pixels
+
+#We are going to color different bands  par function 
+[10:20 AM] Duccio Rocchini
+    
+cl <- colorRampPalette(c('black','grey','light grey'))(100) # 
+plot(p224r63_2011, col=cl)
+par(mfrow=c(2,2))
+ 
+clb <- colorRampPalette(c('dark blue','blue','light blue'))(100) #       #here we are telling what is colorblue, clb
+# then 
+plot(p224r63_2011$B1_sre, col=clb)
+clr <- colorRampPalette(c('dark red','red','pink'))(100) #
+plot(p224r63_2011$B3_sre, col=clr)
+#we are building the layers   
+Exercise  Exercise: plot the final band, namely the NIR, band number 4
+# red, orange, yellow
+
+clnir <- colorRampPalette(c('red','orange','yellow'))(100) #
+plot(p224r63_2011$B4_sre, col=clnir)
+#his clnir <- colorRampPalette(c('red','orange','yellow'))(100) # 
+plot(p224r63_2011$B4_sre, col=clnir)
+#band 4, the color scheme is called RGB used by computers to show colors and depending on how much red, etc. now lets combine this image of layers and put
+#corresponding component  in RGB space we put blue band 1, band 2 green etc.
+#plot RGB(), we take multilayer and use RGR scheme and we will stretch, define the bands and colors and stretch, stretch"Lin"
+dev.off()
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+#but we cut this area and try to see a region that we can't with our eye, so we can use 3 bands to see image better, 3 bands, 3 components, only RGB space
+#so we use B1, b2, b3 for now let's shift, by one towards b4 nir, but get rid of one, we need to shift and not use 1
+dev.off() so we eliminated blue, 1 in shift, and now we see all vegetatino in red, we can see the areas where no Vegetation, important to know the landscape we see!
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+
+#Nice we see the pattern like lungs, to create open spaces for ecosystem exchange and access,
+#so we can choose which bands we want where, we know 4 is NIR, so let's make it green now, where it was red in the code, see 76-79
+> plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+> plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+> plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
+#so it is a standard, b1=blue, etc. all landsat data is defined in this way , I can put NIR in red band or others if I want, it is reflective in other ways
+#Natural colors, false colors, how they differ, seems need to protect the data uplink and downlink from hacking or misleading, which leads to mistakes
+#best is a camera, if not possible then data from satelites and secure the heck out of it, in and out
+#try to save image again even though Windows doesn't want to... 
+
+
+
