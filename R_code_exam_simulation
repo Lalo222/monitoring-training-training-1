@@ -1,0 +1,28 @@
+# Monday January 11, 2021  
+#Exam practice data Copernico Land Temperatures, chose 2nd choice, 10 day cycle, Oct. 1, 2020
+#https://land.copernicus.vgt.vito.be/PDF/portal/Application.html    registered Lalo222  Energy Budget Land Surface Temp go to 10 day and under search
+#Load library   
+install.packages("rasterdiv")
+install.packages("ncdf4")    #to read the nc files from copernico, 
+
+#as usual setwd  
+setwd("C:/lab/")
+
+#now Upload data  we are working with only one layer, not like the layers the other day with brick
+library(raster)
+#load data
+tjan <- raster("c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc")
+
+#Plot
+plot(tjan)
+#Nice the data is working
+#change color
+cltjan <- colorRampPalette(c('black','grey','light grey'))(100) #
+
+#here we had to define 
+cltjan <- colorRampPalette(c('green','red','yellow'))(100)
+plot(tjan, col=cltjan)
+
+#Now we bring in another image, get name to label
+toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
+plot(toct, col=cltjan)
