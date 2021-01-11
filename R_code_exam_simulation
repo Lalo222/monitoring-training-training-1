@@ -23,6 +23,32 @@ cltjan <- colorRampPalette(c('black','grey','light grey'))(100) #
 cltjan <- colorRampPalette(c('green','red','yellow'))(100)
 plot(tjan, col=cltjan)
 
-#Now we bring in another image, get name to label
+#Now we bring in another image, get name to label from Jan.01,2021 then do this with new name of file:
+toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
+plot(toct, col=cltjan)  noffile found
+
+dift <- tjan - toct
+cldif <- colorRampPalette(c('blue','white','red'))(100) #
+plot(dift, col=cldif)
+#Something wrong  go back and redownload and copy again and delete any extra copies
 toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
 plot(toct, col=cltjan)
+#all good, worked
+let's change colors of tOct.
+cltoct <- colorRampPalette(c('green','grey','blue'))(100)
+#worked
+#from my screen in R:
+toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
+plot(toct, col=cltjan)
+cltoct <- colorRampPalette(c('green','grey','blue'))(100)
+plot(toct, col=cltoct)
+#Pretty
+#Now we try to subtract the two sets of data, which is nice
+dift <- tjan - toct
+cldif <- colorRampPalette(c('blue','white','red'))(100) #
+plot(dift, col=cldif)
+#Error in trying to take diffence 
+ dift <- tjan - toct
+Error in R_nc4_open: No such file or directory
+Error in ncdf4::nc_open(x@file@name, suppress_dimvals = TRUE) : 
+  Error in nc_open trying to open file C:\lab\c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc
