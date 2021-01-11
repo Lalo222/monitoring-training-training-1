@@ -65,6 +65,6 @@ dift <- tjan - toct
 plot(dift)
 # All good and see the differences, maybe choose better colors that contrast to see a better subraction intuitively 
 #went back and changed name under lab to one set under properties, again it was saved as copy 1 and didn't show up in name under lab folder,
-#Avoid multiple downloads of data!!!
+#Avoid multiple downloads of data!!!  Computer suffers from Catastrophic Forgetting, as we do often!
   
   
