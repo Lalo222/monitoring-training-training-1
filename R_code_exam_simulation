@@ -51,4 +51,20 @@ plot(dift, col=cldif)
  dift <- tjan - toct
 Error in R_nc4_open: No such file or directory
 Error in ncdf4::nc_open(x@file@name, suppress_dimvals = TRUE) : 
-  Error in nc_open trying to open file C:\lab\c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc
+Error in nc_open trying to open file C:\lab\c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc
+
+#Duccio called and we went to file/properties and copied name from there into the R command line and it worked!
+setwd("C:/lab/")
+> tjan <- raster("c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc")
+Error in R_nc4_open: No such file or directory
+Error in ncdf4::nc_open(filename, readunlim = FALSE, suppress_dimvals = TRUE) : 
+  Error in nc_open trying to open file C:/lab/c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc
+tjan <- raster("c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1 (1).nc")
+plot(tjan, col=cltjan)
+dift <- tjan - toct
+plot(dift)
+# All good and see the differences, maybe choose better colors that contrast to see a better subraction intuitively 
+#went back and changed name under lab to one set under properties, again it was saved as copy 1 and didn't show up in name under lab folder,
+#Avoid copies of data!!!
+  
+  
