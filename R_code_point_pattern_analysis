@@ -1,5 +1,7 @@
-#to load data covid <- read.table("covid_agg.csv", header=TRUE)
-#but after help we loaded with covid <- read.table("covid_agg.csv", header=T)
+#to load data 
+covid <- read.table("covid_agg.csv", header=TRUE)
+#but after help we loaded with 
+covid <- read.table("covid_agg.csv", header=T)
 
 
 
