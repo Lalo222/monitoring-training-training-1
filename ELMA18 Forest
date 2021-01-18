@@ -24,3 +24,5 @@ df1<- unique(df)
 #maybe use formula and get excell to do the multiplication rather than step by step
 #summary, pairs and other commands work well, but means are not true means due to excel problem
 #also how to remove duplicate values not duplicate rows and columns as there are none
+
+#Ask how to make different types of files from excel data
