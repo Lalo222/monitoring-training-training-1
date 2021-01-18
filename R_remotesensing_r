@@ -42,30 +42,32 @@ max values :    0.1249041,    0.2563655,    0.2591587,    0.5592193,    0.489498
 
 #now we plot, same function again, but we have 4 mill pixels
 
-#We are going to color different bands  par function 
-[10:20 AM] Duccio Rocchini
+#We are going to color different bands  par function   
+
     
-cl <- colorRampPalette(c('black','grey','light grey'))(100) # 
+cl <- colorRampPalette(c('black','grey','light grey'))(100)  
 plot(p224r63_2011, col=cl)
 par(mfrow=c(2,2))
  
-clb <- colorRampPalette(c('dark blue','blue','light blue'))(100) #       #here we are telling what is colorblue, clb
-# then 
+clb <- colorRampPalette(c('dark blue','blue','light blue'))(100)        #here we are telling what is colorblue, clb
+ 
 plot(p224r63_2011$B1_sre, col=clb)
-clr <- colorRampPalette(c('dark red','red','pink'))(100) #
+clr <- colorRampPalette(c('dark red','red','pink'))(100) 
 plot(p224r63_2011$B3_sre, col=clr)
 #we are building the layers   
 Exercise  Exercise: plot the final band, namely the NIR, band number 4
 # red, orange, yellow
 
-clnir <- colorRampPalette(c('red','orange','yellow'))(100) #
+clnir <- colorRampPalette(c('red','orange','yellow'))(100) 
 plot(p224r63_2011$B4_sre, col=clnir)
-#his clnir <- colorRampPalette(c('red','orange','yellow'))(100) # 
+#his clnir <- colorRampPalette(c('red','orange','yellow'))(100)   #good  LM
 plot(p224r63_2011$B4_sre, col=clnir)
 #band 4, the color scheme is called RGB used by computers to show colors and depending on how much red, etc. now lets combine this image of layers and put
 #corresponding component  in RGB space we put blue band 1, band 2 green etc.
 #plot RGB(), we take multilayer and use RGR scheme and we will stretch, define the bands and colors and stretch, stretch"Lin" #here we combine layers
+
 dev.off()
+
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")  #Layers together, 3 at most for RGB
 #but we cut this area and try to see a region that we can't with our eye, so we can use 3 bands to see image better, 3 bands, 3 components, only RGB space
 #so we use B1, b2, b3 for now let's shift, by one towards b4 nir, but get rid of one, we need to shift and not use 1
@@ -73,7 +75,7 @@ dev.off() so we eliminated blue, 1 in shift, and now we see all vegetatino in re
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 
 #Nice we see the pattern like lungs, to create open spaces for ecosystem exchange and access,
-#so we can choose which bands we want where, we know 4 is NIR, so let's make it green now, where it was red in the code, see 76-79
+#so we can choose which bands we want where, we know 4 is NIR, so let's make it green now, where it was red in the code, see 79-81
 > plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 > plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
 > plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
