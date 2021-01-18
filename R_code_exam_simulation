@@ -17,7 +17,7 @@ tjan <- raster("c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc")
 plot(tjan)
 #Nice the data is working
 #change color
-cltjan <- colorRampPalette(c('black','grey','light grey'))(100) #
+cltjan <- colorRampPalette(c('black','grey','light grey'))(100) 
 
 #here we had to define 
 cltjan <- colorRampPalette(c('green','red','yellow'))(100)
@@ -28,7 +28,7 @@ toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
 plot(toct, col=cltjan)  noffile found
 
 dift <- tjan - toct
-cldif <- colorRampPalette(c('blue','white','red'))(100) #
+cldif <- colorRampPalette(c('blue','white','red'))(100) 
 plot(dift, col=cldif)
 #Something wrong  go back and redownload and copy again and delete any extra copies
 toct <- raster("c_gls_LST10-DC_202010010000_GLOBE_GEO_V1.2.1.nc")
@@ -45,7 +45,7 @@ plot(toct, col=cltoct)
 #Pretty
 #Now we try to subtract the two sets of data, which is nice
 dift <- tjan - toct
-cldif <- colorRampPalette(c('blue','white','red'))(100) #
+cldif <- colorRampPalette(c('blue','white','red'))(100) 
 plot(dift, col=cldif)
 #Error in trying to take diffence 
  dift <- tjan - toct
