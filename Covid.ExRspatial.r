@@ -74,6 +74,10 @@ C:\Users\123fatto\Desktop\R code
 #biofuels as amount of fossil fuel to be reduced using biofuels
 
 biofuels <-c(120, 200, 350, 570, 750)   #built this set cosi, n1, n2, n3 etc. and grouped array:use c  will be first column
+bluebeetles<-c(0,0,0,0,1,0)
+blackbeetles<-c(0,0,0,0,0,0)
+redbeetles<-c(0,0,0,1,0,0)
+pinkbeetles<-c(1,1,1,0,0,1)
 #oxidative enzymes
 oxidative <-c(1200, 1300, 21000, 34000, 50000)  #will be second column  biofuels    oxidative
 #then type name of set to recall and make a frame with [1]
@@ -81,7 +85,7 @@ oxidative <-c(1200, 1300, 21000, 34000, 50000)  #will be second column  biofuels
 #function to build dataframe is data.frame
 
 #data.frame  for biofuels,    oxidative
-d <- data.frame(biofuels, oxidative)
+d <- data.frame(biofuels, oxidative)   # d <- data.frame(redbeetles, bluebeetles, greenbeetles, pinkbeetles)
 #then d to call it up, so always function with name then use name to use it, 
 #spaces don't matter here
 #so far: > library(ggplot2)
@@ -103,23 +107,23 @@ d <- data.frame(biofuels, oxidative)
 #now plot data, use plot but here ggplot2 is ggplot
 
 #ggplot(data = ,aes(),..,###=parent frame) -- aestetics..aes
-ggplot(d, aes(x=biofuels, y=oxidative))  #this opens empty window ready,we have defined the parameters of the "room"
+ggplot(d, aes(x=biofuels, y=oxidative))  #this opens empty window ready,we have defined the parameters of the "room"   ggplot(d, aes(x=pinkbeetles, y=redbeetles))
 #explain to R we are adding an additional parent, geometry  + geom(choose type we want, point for scatter)
-ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point()
+ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point()                  #ggplot(d, aes(x=pinkbeetles, y=redbeetles)) + geom_point()
 
 #gave a nice plot with labels for axis of how the values are related
 #now change colors ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col="red")
-ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col= "red")
+ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col= "red")     #ggplot(d, aes(x=pinkbeetles, y=redbeetles)) + geom_point(size=5, col= "red")
 
 #lines  use geom_line ...cool
-ggplot(d, aes(x=biofuels, y=oxidative)) + geom_line(size=5, col="red")
+ggplot(d, aes(x=biofuels, y=oxidative)) + geom_line(size=5, col="red")       #ggplot(d, aes(x=pinkbeetles, y=redbeetles)) + geom_line(size=5, col= "red")
 
 #now points and lines geom_point + geom_line together
 # could not change colors for both ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5,col="red") + geom_line(size 7, col="blue")
 ggplot(d, aes(x=biofuels, y=oxidative)) + geom_point(size=5, col="red")
 
-#geom_polygon if we want
-ggplot(d, aes(x = biofuels, y = oxydative)) + geom_polygon()
+#geom_polygon if we want  
+ggplot(d, aes(x = biofuels, y = oxydative)) + geom_polygon()                  #ggplot(d, aes(x = pinkbeetles, y = redbeetles)) + geom_polygon()
 
 
 #setwd, for importing and exporting data so build new directory called lab
