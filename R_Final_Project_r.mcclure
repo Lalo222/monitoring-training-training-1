@@ -87,3 +87,354 @@ Integer64 fields read as strings:  scalerank
 Warning message:
 In plot.sf(Spoints, cex = Spoints$cases/1e+05, col = "purple3",  :
   ignoring all but the first attribute
+  
+  #continue with changing latitudes and longitudes and prime species value at zero and real
+  #Lopi33 is adapted data with real prime values and grouped by US region Latitudes and longitudes, Best plot data
+  setwd("C:/lab/")
+lopi33  <- read.table("lopi_agg33.csv", header=TRUE)
+
+ggplot(lopi33, aes(x = lon, y = lat, size=cases)) + geom_point()
+lopi33  #to see list of all data proves correct data
+
+
+
+
+#Point Pattern analysis  Friday Nov. 20th, issue with Covid file  after #ggplot(covid, aes(x = lon, y = lat)) + geom_point()
+ggplot(lopi, aes(x = lon, y = lat, size = cases)) + geom_point()
+                                                                        
+
+#changed the size of my dots to indicate cases, relative to size of dot, 20000-80000, looks nice
+##install ggplot2, did earlier, call forward
+library(ggplot2)
+#make scatter plot
+ggplot(lopi33, aes(x = lon, y = lat)) + geom_point()
+ setwd("C:/lab/")
+lopi  <- read.table("lopi_agg.csv", header=TRUE)
+lopi <- read.table("lopi_agg.csv", header=T)
+lopi33  <- read.table("lopi_agg33.csv", header=TRUE)
+
+ggplot(lopi33, aes(x = lon, y = lat, size=cases)) + geom_point()
+lopi33  to see list of all data
+
+> lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))        
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> attach(lopi33)
+> lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00, -47.40,47.40)) 
+Error in owin(...) : 
+  If one of xrange, yrange is specified then both must be.
+> lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00), -47.40,47.40))
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00), -47.40,47.40))"
+> lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> lopi33_planar <- ppp(lon, lat, c(-70,70), c(-90,90))
+Warning message:
+26 points were rejected as lying outside the specified window 
+> lopi33_planar <- ppp(lon, lat, c(-120, 120), c(-90,90))
+Warning message:
+2 points were rejected as lying outside the specified window 
+> lopi33_planar <- ppp(lon, lat, c(-140, 140), c(-90,90))
+> density_map33 <- density(lopi33_planar)
+> plot(density_map33)
+> points(lopi33_planar)
+> coastlines <- readOGR("ne_10m_coastline.shp"
++ )  #here again I did not close the command
+OGR data source with driver: ESRI Shapefile 
+Source: "C:\lab\ne_10m_coastline.shp", layer: "ne_10m_coastline"
+with 4133 features
+It has 3 fields
+Integer64 fields read as strings:  scalerank 
+> plot(coastlines, add=T)
+> points(lopi33_planar)
+> marks(lopi33_planar) <- cases
+> cases_map <- Smooth(lopi33_planar)
+Warning message:
+Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 58]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+> plot(cases_map)
+> points(lopi33_planar)
+> plot(coastlines, add = T)
+> plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', size=cases, lwd = 3, add=T)
+Error in h(simpleError(msg, call)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'plot': object 'Spoints' not found
+> plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+Error in h(simpleError(msg, call)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'plot': object 'Spoints' not found
+> Spoints <- st_as_sf(lopi33, coords = c("lon", "lat"))
+Error in st_as_sf(lopi33, coords = c("lon", "lat")) : 
+  could not find function "st_as_sf"
+> Spoints <- st_as_sf(lopi33, coords = c("lon", "lat"))
+Error in st_as_sf(lopi33, coords = c("lon", "lat")) : 
+  could not find function "st_as_sf"
+names(lopi33)
+[1] "cat"   "zone"  "cases" "lat"   "lon" 
+library(sf)
+good
+null device 
+          1 
+> head(lopi33)
+   cat zone cases      lat       lon
+1 Lopi  17a    99 35.63007 -79.80642
+2 Lopi  17b    51 33.85689 -80.94501
+3 Lopi  17c    35 37.66814 -84.67007
+4 Lopi  17d    88 33.04062 -83.64307
+5 Lopi  13a    39 44.69395 -69.38193
+6 Lopi  13b    73 40.59075 -77.20976
+> attach(lopi33)
+The following objects are masked from lopi33 (pos = 4):
+
+    cases, cat, lat, lon, zone
+
+> lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> marks(lopi33_planar)<-cases
+> cases_map<-Smooth(lopi33_planar)
+Warning message:
+Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+####Here we see that the true "species" values for each congruence class, when put into the latitudes and ton of the regions of the US, can not be interpolated as they are
+#####to densely packed into the space.  Get a strange map, shown in presentation.
+
+
+#Use this class info:  Point Pattern analysis  Friday Nov. 20th, issue with Covid file  after #ggplot(covid, aes(x = lon, y = lat)) + geom_point()
+ggplot(lopi, aes(x = lon, y = lat, size = cases)) + geom_point()
+                                                                        
+
+#changed the size of my dots to indicate cases, relative to size of dot, 20000-80000, looks nice
+##install ggplot2, did earlier, call forward
+library(ggplot2)
+#make scatter plot
+ggplot(lopi33, aes(x = lon, y = lat, size=cases)) + geom_point()
+#use this code with my data designated    ggplot(covid, aes(x = lon, y = lat)) + geom_point()
+
+####Will try to adjust long and lat to see if changes anything on interpolation
+> lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))        
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> attach(lopi33)
+> lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+Error: unexpected ')' in "lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))"
+> lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00, -47.40,47.40)) 
+Error in owin(...) : 
+  If one of xrange, yrange is specified then both must be.
+> lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00), -47.40,47.40))
+Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00), -47.40,47.40))"
+> lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> lopi33_planar <- ppp(lon, lat, c(-70,70), c(-90,90))
+Warning message:
+26 points were rejected as lying outside the specified window 
+> lopi33_planar <- ppp(lon, lat, c(-120, 120), c(-90,90))
+Warning message:
+2 points were rejected as lying outside the specified window 
+> lopi33_planar <- ppp(lon, lat, c(-140, 140), c(-90,90))
+> density_map33 <- density(lopi33_planar)
+plot(density_map33)
+####No changes, still strange 70's distortion
+#change the size of my dots (data)
+> plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+Error in h(simpleError(msg, call)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'plot': object 'Spoints' not found
+> Spoints <- st_as_sf(lopi33, coords = c("lon", "lat"))
+Error in st_as_sf(lopi33, coords = c("lon", "lat")) : 
+  could not find function "st_as_sf"
+> Spoints <- st_as_sf(lopi33, coords = c("lon", "lat"))
+Error in st_as_sf(lopi33, coords = c("lon", "lat")) :        #####I did not load sf - library(sf)
+  could not find function "st_as_sf"
+names(lopi33)
+[1] "cat"   "zone"  "cases" "lat"   "lon" 
+library(sf)
+> lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+> marks(lopi33_planar)<-cases
+> cases_map<-Smooth(lopi33_planar)
+Warning message:
+Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+> Smooth(lopi33_planar)
+real-valued pixel image
+128 x 128 pixel array (ny, nx)
+enclosing rectangle: [-180, 180] x [-90, 90] units
+Warning message:
+Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+> cl <- colorRampPalette(c('blue','orange','red'))(100)
+>  plot(cases_map, col = cl)
+Spoints <- st_as_sf(covid, coords = c("lon","lat"))
+#Error in st_as_sf(covid, coords = c("lon", "lat")) : 
+#object 'covid' not found
+Spoints <- st_as_sf(lopi33, coords = c("lon","lat"))
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)    #worked great remember always correct library
+#Warning message:
+#In plot.sf(Spoints, cex = Spoints$cases/10000, col = "purple3",  :
+  ignoring all but the first attribute
+coastlines <- readOGR("ne_10m_coastline.shp")
+#OGR data source with driver: ESRI Shapefile 
+#Source: "C:\lab\ne_10m_coastline.shp", layer: "ne_10m_coastline"
+#with 4133 features
+#It has 3 fields
+#Integer64 fields read as strings:  scalerank 
+plot(coastlines, add=T)
+ 
+
+####good
+
+
+#change the size of my dots (data)
+#data with world long and lat average prime quantity
+head(lopi)
+   cat zone cases       lat        lon
+1 Lopi  17a    99  33.83890  66.026530
+2 Lopi  17b    51  41.14596  20.069178
+3 Lopi  17c    35  28.16336   2.632366
+4 Lopi  17d    91  42.54858   1.575688
+5 Lopi  13a    39  17.28014 -61.791128
+6 Lopi  13b    73 -35.37667 -65.167485
+> summary(lopi)
+     cat                zone               cases            lat         
+ Length:27          Length:27          Min.   :16.00   Min.   :-37.868  
+ Class :character   Class :character   1st Qu.:42.50   1st Qu.:  6.129  
+ Mode  :character   Mode  :character   Median :60.00   Median : 26.019  
+                                       Mean   :61.52   Mean   : 20.580  
+                                       3rd Qu.:86.00   3rd Qu.: 41.847  
+                                       Max.   :99.00   Max.   : 61.393  
+      lon        
+ Min.   :-98.26  
+ 1st Qu.:-27.41  
+ Median : 17.79  
+ Mean   : 14.61  
+ 3rd Qu.: 49.05  
+ Max.   :134.49  
+
+#mistake
+#Error in h(simpleError(msg, call)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'plot': object 'density_maplopi' not found
+lopi_planar <- ppp(x, y, c(-180,180), c(-90,90))
+Warning message:
+18 points were rejected as lying outside the specified window 
+lopi_planar <- ppp(x, y, c(-180,180), c(-180,180))
+lopi <-read.table("Lopi_agg2.csv", header=TRUE)    #note here I call again lopi, but really data of Lopi_agg2.csv,0 P, world
+lopi
+    cat zone cases        lat        lon
+1  Lopi  17a    99  33.838901  66.026530
+2  Lopi  17b    51  41.145956  20.069178
+3  Lopi  17c    35  28.163357   2.632366
+4  Lopi  17d     0  42.548583   1.575688
+5  Lopi  13a    39  17.280137 -61.791128
+6  Lopi  13b    73 -35.376673 -65.167485
+7  Lopi  13c    43  40.286417  44.947934
+8  Lopi  13d    30 -25.733260 134.490976
+9  Lopi  13e     0  47.592958  14.139988
+10 Lopi  11a    58  40.292220  47.532327
+11 Lopi  11b    79  26.019474  50.562489
+12 Lopi  11c    44  23.833007  90.270926
+13 Lopi  11d     0  53.540220  28.046945
+14 Lopi   7a    45  50.642952   4.664384
+15 Lopi   7b    60  27.415461  90.429433
+16 Lopi   7c    60 -16.715110 -64.670548
+17 Lopi   7d    25  44.166440  17.788611
+18 Lopi   7e     0 -10.772283 -53.088754
+19 Lopi   5a    71   4.521478 114.761321
+20 Lopi   5b    42  42.760321  25.234758
+21 Lopi   5c    71  12.277937  -1.739835
+22 Lopi   5d     0  12.714030 104.921240
+23 Lopi   1a    84   5.685804  12.743253
+24 Lopi   1b    66  61.393067 -98.260947
+25 Lopi   1c    22  19.431525 -80.829097
+26 Lopi   1d    16   6.571453  20.482781
+27 Lopi   1e     0 -37.868119 -71.380094
+head(lopi)
+   cat zone cases       lat        lon
+1 Lopi  17a    99  33.83890  66.026530
+2 Lopi  17b    51  41.14596  20.069178
+3 Lopi  17c    35  28.16336   2.632366
+4 Lopi  17d     0  42.54858   1.575688
+5 Lopi  13a    39  17.28014 -61.791128
+6 Lopi  13b    73 -35.37667 -65.167485
+> summary(lopi)
+     cat                zone               cases            lat         
+ Length:27          Length:27          Min.   : 0.00   Min.   :-37.868  
+ Class :character   Class :character   1st Qu.:19.00   1st Qu.:  6.129  
+ Mode  :character   Mode  :character   Median :43.00   Median : 26.019  
+                                       Mean   :41.22   Mean   : 20.580  
+                                       3rd Qu.:63.00   3rd Qu.: 41.847  
+                                       Max.   :99.00   Max.   : 61.393  
+      lon        
+ Min.   :-98.26  
+ 1st Qu.:-27.41  
+ Median : 17.79  
+ Mean   : 14.61  
+ 3rd Qu.: 49.05  
+ Max.   :134.49  
+library(ggplot2)
+ggplot(lopi, aes(x=lon,y=lat, size=cases))+ geom_point()      #I like ggplot
+
+#Now second part
+library(spatstat)
+head(lopi)
+summary(lopi)
+attach(lopi)
+####The following objects are masked from lopi (pos = 10):
+lopi2  <- read.table("lopi_agg2.csv", header=TRUE)    #went back and called it correctly, lopi2  redo maps
+attach(lopi2)
+#The following objects are masked from lopi:
+ ###cases, cat, lat, lon, zone
+ 
+lopi2_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+density_map <- density(lopi2_planar)
+plot(density_map)
+points(lopi2_planar)
+coastlines <- readOGR("ne_10m_coastline.shp")
+#OGR data source with driver: ESRI Shapefile 
+#Source: "C:\lab\ne_10m_coastline.shp", layer: "ne_10m_coastline"
+#with 4133 features
+#It has 3 fields
+#Integer64 fields read as strings:  scalerank 
+plot(coastlines, add=T)
+head(lopi2)
+
+
+#cases, cat, lat, lon, zone
+lopi_planar <- ppp(lon, lat,c(-180, 180), -90,90))
+density_mapLOPI <- density(lopi_planar)
+plot(density_mapLOPI)
+ 
+cl <- colorRampPalette(c('blue','orange','red'))(100)
+plot(density_mapLOPI, col = cl)
+ 
+density_mapLOPI <-density(lopi_planar)
+points(lopi_planar)  put points in 
+ 
+#now use rgdal to put in coastlines, he gave us shapefile...description
+#raster and vector type
+#density map an image of pixels, rastor, pixel smallest unit in picture
+library(rgdal)
+coastlines <- readOGR("ne_10m_coastline.shp")
+plot(coastlines, add=T)
+added world coastlines
+ 
+#Interpolate  use marks- use the less than on the end to reflect back to waht we are marking
+marks(lopi_planar) <- cases  #now we use smooth which smoothes the data, 
+cases_map <- Smooth(lopi_planar)  #apply smooth to planar point and name it with arrow, cases_map
+#Least Squares Cross-Validation criterion was minimised at right-hand end 
+plot(cases_map)
+
+ 
+ plot(cases_map, col = cl)
+ 
+plot(coastlines, add = T)
+ 
+points(lopi_planar)
+ 
+
+
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+#changed dots to blue
+ 
+#together with the interpolation of where not measured data(average between 2 known values e continue  #Problem for close lat and lons in real data in US
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
+#changed shape with pch
+plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, pch=19, add=T)
+
+ 
+
