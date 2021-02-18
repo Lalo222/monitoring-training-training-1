@@ -272,7 +272,7 @@ Error: unexpected ')' in "lopi33_planar <- ppp(lon, lat, c(-70.00, 70.00), -47.4
 > lopi33_planar <- ppp(lon, lat, c(-70,70), c(-90,90))
 Warning message:
 26 points were rejected as lying outside the specified window 
-> lopi33_planar <- ppp(lon, lat, c(-120, 120), c(-90,90))
+> lopi33_planar <- ppp(lon, lat, c(-120, 120), c(-90,90))   ###ppp=spatstat point pattern
 Warning message:
 2 points were rejected as lying outside the specified window 
 > lopi33_planar <- ppp(lon, lat, c(-140, 140), c(-90,90))
@@ -287,24 +287,24 @@ Error in h(simpleError(msg, call)) :
 Error in st_as_sf(lopi33, coords = c("lon", "lat")) : 
   could not find function "st_as_sf"
 > Spoints <- st_as_sf(lopi33, coords = c("lon", "lat"))
-Error in st_as_sf(lopi33, coords = c("lon", "lat")) :        #####I did not load sf - library(sf)
-  could not find function "st_as_sf"
-names(lopi33)
+Error in st_as_sf(lopi33, coords = c("lon", "lat")) :        #####I did not load sf - library(sf)  st=converts data into sf object
+  could not find function "st_as_sf"     ###yeah because I didn't load the library!!!!####
+names(lopi33)  #refer to objects as name rather than value
 [1] "cat"   "zone"  "cases" "lat"   "lon" 
 library(sf)
-> lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
-> marks(lopi33_planar)<-cases
-> cases_map<-Smooth(lopi33_planar)
-Warning message:
-Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
-> Smooth(lopi33_planar)
-real-valued pixel image
-128 x 128 pixel array (ny, nx)
-enclosing rectangle: [-180, 180] x [-90, 90] units
-Warning message:
-Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
-> cl <- colorRampPalette(c('blue','orange','red'))(100)
->  plot(cases_map, col = cl)
+lopi33_planar <- ppp(lon, lat, c(-180,180), c(-90,90))   #c is an array 2D
+marks(lopi33_planar)<-cases    #Interpolate  marks values for the points vector or data frame
+cases_map<-Smooth(lopi33_planar)
+#Warning message:
+#Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+Smooth(lopi33_planar)
+#real-valued pixel image
+#128 x 128 pixel array (ny, nx)
+#enclosing rectangle: [-180, 180] x [-90, 90] units
+#Warning message:
+#Least Squares Cross-Validation criterion was minimised at right-hand end of interval [2.32, 65.7]; use arguments ‘hmin’, ‘hmax’ to specify a wider interval for bandwidth ‘sigma’ 
+cl <- colorRampPalette(c('blue','orange','red'))(100)
+plot(cases_map, col = cl)
 Spoints <- st_as_sf(covid, coords = c("lon","lat"))
 #Error in st_as_sf(covid, coords = c("lon", "lat")) : 
 #object 'covid' not found
@@ -353,12 +353,12 @@ head(lopi)
 
 #mistake
 #Error in h(simpleError(msg, call)) : 
-  error in evaluating the argument 'x' in selecting a method for function 'plot': object 'density_maplopi' not found
+ # error in evaluating the argument 'x' in selecting a method for function 'plot': object 'density_maplopi' not found
 lopi_planar <- ppp(x, y, c(-180,180), c(-90,90))
-Warning message:
-18 points were rejected as lying outside the specified window 
+#Warning message:
+#18 points were rejected as lying outside the specified window 
 lopi_planar <- ppp(x, y, c(-180,180), c(-180,180))
-lopi <-read.table("Lopi_agg2.csv", header=TRUE)    #note here I call again lopi, but really data of Lopi_agg2.csv,0 P, world
+lopi <-read.table("Lopi_agg2.csv", header=TRUE)    #####note here I call again lopi, but really data of Lopi_agg2.csv,0 P, world
 lopi
     cat zone cases        lat        lon
 1  Lopi  17a    99  33.838901  66.026530
@@ -396,7 +396,7 @@ head(lopi)
 4 Lopi  17d     0  42.54858   1.575688
 5 Lopi  13a    39  17.28014 -61.791128
 6 Lopi  13b    73 -35.37667 -65.167485
-> summary(lopi)
+summary(lopi)
      cat                zone               cases            lat         
  Length:27          Length:27          Min.   : 0.00   Min.   :-37.868  
  Class :character   Class :character   1st Qu.:19.00   1st Qu.:  6.129  
@@ -480,6 +480,8 @@ plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
 plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, add=T)
 #changed shape with pch
 plot(Spoints, cex=Spoints$cases/10000, col = 'purple3', lwd = 3, pch=19, add=T)
+
+#thank you Duccio for all the excellent help and interesting information.  You are an amazing Prof. 
 
  
 
