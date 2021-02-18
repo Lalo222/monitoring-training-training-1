@@ -1,19 +1,64 @@
 #Jan 25, 2021
 #adapted my data to the Covid file 
+#I will have my data with World Lat/Lon with average Prime quantity and without Prime quantity  LOPI  and LOPI2, respectively
+#As well I will change the Covid date to use Lats/Long of US geo regions, with Real Prime Value and without, 0, prime, LOPI33 and LOPI3, respectively
 
 > lopi <- read.table("lopi_agg.csv", header=T)
 > attach(lopi)
 > library(spatstat)
 > dev.off()
 null device 
-          1 
-> attach(lopi)
+
 The following objects are masked from lopi (pos = 3):
 
     cases, cat, lat, lon, zone
 
 > attach_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
 > lopi_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+ lopi3 <- read.table("lopi_agg3.csv", header=T)
+> head(lopi3)
+   cat zone cases      lat       lon
+1 Lopi  17a    99 35.63007 -79.80642
+2 Lopi  17b    51 33.85689 -80.94501
+3 Lopi  17c    35 37.66814 -84.67007
+4 Lopi  17d     0 33.04062 -83.64307
+5 Lopi  13a    39 44.69395 -69.38193
+6 Lopi  13b    73 40.59075 -77.20976
+> summary(lopi3)
+     cat                zone               cases            lat       
+ Length:27          Length:27          Min.   : 0.00   Min.   :31.05  
+ Class :character   Class :character   1st Qu.:19.00   1st Qu.:35.24  
+ Mode  :character   Mode  :character   Median :43.00   Median :40.15  
+                                       Mean   :41.22   Mean   :39.23  
+                                       3rd Qu.:63.00   3rd Qu.:42.49  
+                                       Max.   :99.00   Max.   :47.40  
+      lon         
+ Min.   :-122.07  
+ 1st Qu.:-110.94  
+ Median : -97.56  
+ Mean   : -97.00  
+ 3rd Qu.: -83.20  
+ Max.   : -69.38 
+
+ggplot(lopi3, aes(x=lon,y=lat, size=cases))+ geom_point()
+ 
+Scatter plot alined by region
+attach(lopi3)
+lopi3_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+density_mapLOPI3 <- density(lopi3_planar)
+plot(density_mapLOPI3)
+ 
+points(lopi3_planar)
+cl <- colorRampPalette(c('blue','orange','red'))(100)
+plot(density_map, col=cl)
+ 
+coastlines <- readOGR("ne_10m_coastline.shp")
+plot(coastlines, add=T)
+points(lopi3_planar)
+ 
+INterpolation  marks(covid_planar) <- cases
+cases_map <- Smooth(lopi3_planar)
+ 
 > density_map <- density(lopi_planar)
 > plot(density_map)
 > points(lopi_planar)
